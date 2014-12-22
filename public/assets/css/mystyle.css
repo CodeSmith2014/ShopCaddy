@@ -1,0 +1,11 @@
+section.addresses-container{
+	border: 1px solid #e7e7e7;
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+	border-radius: 6px;
+	padding: 10px 20px;
+}
+
+section.addresses-container h5{
+font-weight: bold;
+	}
