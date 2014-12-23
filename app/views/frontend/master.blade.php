@@ -31,7 +31,11 @@
      <link rel="shortcut icon" href="/assets/img/favicon.png">
 </head>
 <body>
-     @include('frontend.member.navigation')
+     @if (!Sentry::check())
+          @include('frontend.guest.navigation')
+     @else
+          @include('frontend.member.navigation')
+     @endif
      @yield('before_hgroup')
      <div class="main">
           <div class="container">

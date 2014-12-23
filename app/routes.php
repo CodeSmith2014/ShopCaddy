@@ -11,38 +11,54 @@
 |
 */
 
-Route::get('/', function(){return View::make('frontend.common.index');});
-Route::get('about-us', function(){return View::make('frontend.common.about-us');});
-Route::get('contact', function(){return View::make('frontend.common.contact');});
+# CSRF Protection
+Route::when('*', 'csrf', ['POST', 'PUT', 'PATCH', 'DELETE']);
 
-Route::get('login', function(){return View::make('frontend.guest.register-login');});
+# Static Pages. Redirect user so user cannot access these pages
+Route::group(['before' => 'redirectUser'], function()
+{
+	Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getHome']);
+	Route::get('about-us', ['as' => 'about-us', 'uses' => 'HomeController@getAbout']);
+	Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@getContact']);
+});
+
+# Registration
 
 
 
-Route::get('faq', function()
-{
-	return View::make('frontend.master');
-});
-Route::get('services-charges', function()
-{
-	return View::make('frontend.master');
-});
-Route::get('shipping-calculator', function()
-{
-	return View::make('frontend.master');
-});
-Route::get('prohibited-items', function()
-{
-	return View::make('frontend.master');
-});
-Route::get('terms-conditions', function()
-{
-	return View::make('frontend.master');
-});
-Route::get('privacy-policy', function()
-{
-	return View::make('frontend.master');
-});
+# Authentication
+Route::get('login', ['as' => 'login', 'uses' => 'SessionController@create'])->before('guest');
+Route::get('logout', ['as' => 'logout', 'uses' => 'SessionController@destroy']);
+Route::resource('sessions', 'SessionController', ['only' => ['create','store','destroy']]);
+
+# Forgotten Password
+
+
+
+// Route::get('faq', function()
+// {
+// 	return View::make('frontend.master');
+// });
+// Route::get('services-charges', function()
+// {
+// 	return View::make('frontend.master');
+// });
+// Route::get('shipping-calculator', function()
+// {
+// 	return View::make('frontend.master');
+// });
+// Route::get('prohibited-items', function()
+// {
+// 	return View::make('frontend.master');
+// });
+// Route::get('terms-conditions', function()
+// {
+// 	return View::make('frontend.master');
+// });
+// Route::get('privacy-policy', function()
+// {
+// 	return View::make('frontend.master');
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -55,44 +71,44 @@ Route::get('privacy-policy', function()
 |
 */
 
-Route::group(array('prefix' => 'account'), function()
+# Member Routes
+Route::group(['before' => 'auth|standardMember'], function()
 {
-	Route::get('/', array(
-		"as"=>"account",function(){
-			return View::make('frontend.member.account.account');
-		}));
+	Route::get('memberProtected', 'StandardMemberController@getMemberProtected');
+	Route::get('credits', ['as' => 'credits', 'uses' => 'StandardMemberController@getCredits']);
+	Route::get('services/assisted-purchase', ['as' => 'assisted-purchase', 'uses' => 'StandardMemberController@getAssistedPurchase']);
+	Route::get('services/forwarding', ['as' => 'forwarding', 'uses' => 'StandardMemberController@getForwarding']);
 
-	Route::get('edit-name', array(
-		"as"=>"edit-name",function(){
-			return View::make('frontend.member.account.edit-name');
-		}));
+	Route::group(array('prefix' => 'account'), function()
+	{
+		Route::get('/', array(
+			"as"=>"account",function(){
+				return View::make('frontend.member.account.account');
+			}));
 
-	Route::get('edit-email', array(
-		"as"=>"edit-email",function(){
-			return View::make('frontend.member.account.edit-email');
-		}));
+		Route::get('edit-name', array(
+			"as"=>"edit-name",function(){
+				return View::make('frontend.member.account.edit-name');
+			}));
 
-	Route::get('edit-mobile-no', array(
-		"as"=>"edit-mobile",function(){
-			return View::make('frontend.member.account.edit-mobile');
-		}));
-	Route::get('addresses', array(
-		"as"=>"addresses",function(){
-			return View::make('frontend.member.account.address');
-		}));
+		Route::get('edit-email', array(
+			"as"=>"edit-email",function(){
+				return View::make('frontend.member.account.edit-email');
+			}));
+
+		Route::get('edit-mobile-no', array(
+			"as"=>"edit-mobile",function(){
+				return View::make('frontend.member.account.edit-mobile');
+			}));
+		Route::get('addresses', array(
+			"as"=>"addresses",function(){
+				return View::make('frontend.member.account.address');
+			}));
+	});
+		
 });
 
-Route::get('credits', function()
-{
-	return View::make('frontend.member.credits');
-});
 
-Route::get('services/assisted-purchase', array(
-	"as"=>"assisted-purchase",function(){
-		return View::make('frontend.member.assisted-purchase');
-	}));
 
-Route::get('services/forwarding', array(
-	"as"=>"forwarding",function(){
-		return View::make('frontend.member.credits');
-	}));
+
+

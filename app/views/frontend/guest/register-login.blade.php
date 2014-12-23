@@ -23,9 +23,9 @@
 						<div class="row">
 							<div class="col-lg-2"></div>
 							<div class="form col-lg-8">
-								<form>
-									<input placeholder="Email" class="form-control" type="text">
-									<input placeholder="Password" class="form-control" type="text">
+								{{ Form::open(['route' => 'sessions.store']) }}
+									<input placeholder="Email" class="form-control" required="required" name="email" type="text">
+									<input placeholder="Password" class="form-control" required="required" name="password" type="password" value="">
 									<div class="forgot">
 										<div class="checkbox">
 											<label class="">
@@ -36,7 +36,7 @@
 										<a href="#">Forgot password?</a>
 									</div>
 									<button type="submit" class="btn btn-primary btn-lg">Sign in</button>
-								</form>
+								{{ Form::close() }}
 							</div>
 							<div class="col-lg-2"></div>
 						</div>
@@ -53,6 +53,7 @@
 								<div class="row">
 									<div class="col-lg-2"></div>
 									<div class="col-lg-8">
+										<input id="Username" name="Username" placeholder="Username" class="form-control" required="" type="text">
 										<input id="Emailaddress" name="Email address" placeholder="Email address" class="form-control" required="" type="text">
 										<input id="CfmEmailaddress" name="Cfm Email address" placeholder="Confirm Email address" class="form-control" required="" type="text">
 										<input id="Password" name="Password" placeholder="Password" class="form-control" required="" type="password">

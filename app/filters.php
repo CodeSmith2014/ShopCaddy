@@ -33,21 +33,27 @@ App::after(function($request, $response)
 |
 */
 
+# guest
 Route::filter('auth', function()
 {
-	if (Auth::guest())
-	{
-		if (Request::ajax())
-		{
-			return Response::make('Unauthorized', 401);
-		}
-		else
-		{
-			return Redirect::guest('login');
-		}
-	}
+	if (!Sentry::check()) return Redirect::guest('login');
 });
 
+# member
+Route::filter('standardMember', function()
+{
+	$user = Sentry::getUser();
+    $membergroup = Sentry::findGroupByName('Members');
+    if (!$user->inGroup($membergroup)) return Redirect::to('login');
+});
+
+# user
+Route::filter('user', function()
+{
+	$user = Sentry::getUser();
+    $usergroup = Sentry::findGroupByName('Users');
+    if (!$user->inGroup($usergroup)) return Redirect::to('login');
+});
 
 Route::filter('auth.basic', function()
 {
@@ -65,9 +71,30 @@ Route::filter('auth.basic', function()
 |
 */
 
+# guest
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Sentry::check())
+	{
+		$user = Sentry::getUser();
+		$membergroup = Sentry::findGroupByName('Members');
+	    $usergroup = Sentry::findGroupByName('Users');
+
+	    if ($user->inGroup($membergroup)) return Redirect::intended('/');
+	    elseif ($user->inGroup($usergroup)) return Redirect::intended('user');
+	}
+});
+
+# user
+Route::filter('redirectUser', function()
+{
+	if (Sentry::check())
+	{
+		$user = Sentry::getUser();
+   		$usergroup = Sentry::findGroupByName('Users');
+
+	    if ($user->inGroup($usergroup)) return Redirect::to('user');
+	}
 });
 
 /*
