@@ -18,8 +18,14 @@ Route::when('*', 'csrf', ['POST', 'PUT', 'PATCH', 'DELETE']);
 Route::group(['before' => 'redirectUser'], function()
 {
 	Route::get('/', ['as' => 'home', 'uses' => 'HomeController@getHome']);
-	Route::get('about-us', ['as' => 'about-us', 'uses' => 'HomeController@getAbout']);
-	Route::get('contact', ['as' => 'contact', 'uses' => 'HomeController@getContact']);
+	Route::get('about-us', ['as' => 'about-us', 'uses' => 'HomeController@getAboutUs']);
+	Route::get('contact-us', ['as' => 'contact', 'uses' => 'HomeController@getContact']);
+	Route::get('faq', ['as' => 'faq', 'uses' => 'HomeController@getFaq']);
+	Route::get('services-charges', ['as' => 'services-charges', 'uses' => 'HomeController@getServicesCharges']);
+	Route::get('shipping-calculator', ['as' => 'shipping-calculator', 'uses' => 'HomeController@getShippingCalculator']);
+	Route::get('prohibited-items', ['as' => 'prohibited-items', 'uses' => 'HomeController@getProhibitedItems']);
+	Route::get('terms-conditions', ['as' => 'terms-conditions', 'uses' => 'HomeController@getTermsConditions']);
+	Route::get('privacy-policy', ['as' => 'privacy-policy', 'uses' => 'HomeController@getPrivacyPolicy']);
 });
 
 # Registration
@@ -34,31 +40,6 @@ Route::resource('sessions', 'SessionController', ['only' => ['create','store','d
 # Forgotten Password
 
 
-
-// Route::get('faq', function()
-// {
-// 	return View::make('frontend.master');
-// });
-// Route::get('services-charges', function()
-// {
-// 	return View::make('frontend.master');
-// });
-// Route::get('shipping-calculator', function()
-// {
-// 	return View::make('frontend.master');
-// });
-// Route::get('prohibited-items', function()
-// {
-// 	return View::make('frontend.master');
-// });
-// Route::get('terms-conditions', function()
-// {
-// 	return View::make('frontend.master');
-// });
-// Route::get('privacy-policy', function()
-// {
-// 	return View::make('frontend.master');
-// });
 
 /*
 |--------------------------------------------------------------------------

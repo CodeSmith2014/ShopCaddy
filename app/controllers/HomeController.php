@@ -20,7 +20,7 @@ class HomeController extends BaseController {
 		return View::make('frontend.common.index');
 	}
 
-	public function getAbout()
+	public function getAboutUs()
 	{
 		return View::make('frontend.common.about-us');
 	}
@@ -28,6 +28,36 @@ class HomeController extends BaseController {
 	public function getContact()
 	{
 		return View::make('frontend.common.contact');
+	}
+
+	public function getFaq()
+	{
+		return View::make('frontend.master');
+	}
+
+	public function getServicesCharges()
+	{
+		return View::make('frontend.master');
+	}
+
+	public function getShippingCalculator()
+	{
+		return View::make('frontend.master');
+	}
+
+	public function getProhibitedItems()
+	{
+		return View::make('frontend.master');
+	}
+
+	public function getTermsConditions()
+	{
+		return View::make('frontend.master');
+	}
+
+	public function getPrivacyPolicy()
+	{
+		return View::make('frontend.master');
 	}
 
 }

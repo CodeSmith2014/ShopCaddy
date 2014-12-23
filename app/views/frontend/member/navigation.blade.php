@@ -17,7 +17,7 @@
                <div class="collapse navbar-collapse">
                     <ul class="nav pull-right navbar-nav">
                          <li class="active"><a href="/">Home</a></li>
-                         <li><a href="about-us">About Us</a></li>
+                         <li><a href="/about-us">About Us</a></li>
                          <li class="dropdown">
                               <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                    Caddy In Action
@@ -34,12 +34,12 @@
                                    <span class="caret"></span>
                               </a>
                               <ul class="dropdown-menu">
-                                   <li><a href="#">FAQs</a></li>
-                                   <li><a href="#">Services & Charges</a></li>
-                                   <li><a href="#">Shipping Calculator</a></li>
-                                   <li><a href="#">Prohibited Items</a></li>
-                                   <li><a href="#">Terms and Conditions</a></li>
-                                   <li><a href="#">Privacy Policy</a></li>
+                                   <li><a href="/faq">FAQs</a></li>
+                                   <li><a href="/services-charges">Services & Charges</a></li>
+                                   <li><a href="/shipping-calculator">Shipping Calculator</a></li>
+                                   <li><a href="/prohibited-items">Prohibited Items</a></li>
+                                   <li><a href="/terms-conditions">Terms and Conditions</a></li>
+                                   <li><a href="/privacy-policy">Privacy Policy</a></li>
                               </ul>
                          </li>
                          <li class="dropdown">
@@ -54,7 +54,7 @@
                                    <li><a href="/logout">Logout</a></li>
                               </ul>
                          </li>
-                         <li><a href="contact">Contact Us</a></li>
+                         <li><a href="/contact-us">Contact Us</a></li>
                     </ul>
                </div>
           </div>
