@@ -75,7 +75,7 @@
 						</table>
 					</div>
 					<div class="table-responsive tab-pane" id="orders">
-						<table class="table table-bordered">
+						<!-- <table class="table table-bordered">
 							<thead>
 								<tr>
 									<td colspan="6" class="danger">Order No: 12345679</td>
@@ -201,7 +201,7 @@
 									<td class="t-center">CNY49.00</td>
 								</tr>
 							</tbody>
-						</table>
+						</table> -->
 
 					</div>
 					<div class="table-responsive tab-pane" id="history">
@@ -292,31 +292,54 @@
 					<span class="sr-only">Close</span>
 				</button>
 				<h4 class="modal-title"><strong>Item Information</strong></h4>
-				<p>All items add into the basket will remain for 30 days.</p>
+				<p>
+					All items add into the basket will remain for 30 days. <br>
+				</p>
 			</div>
 			<div class="modal-body">
 				<form action="" role="form" style="text-align:center">
 					<fieldset>
 						<section>
-							<div class="form-group">
-								<div class="form-inline">
-									<input type="text" class="form-control" placeholder="Product Name">
-									<input type="text" class="form-control" placeholder="URL">
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="name" class="sr-only"></label>
+										<input type="text" id="name" name="name" class="form-control " placeholder="Item Name">
+									</div>
 								</div>
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="url" class="sr-only"></label>
+										<div class="input-group">
+											<div class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></div>
+											<input type="text" id="url" name="url" class="form-control" placeholder="URL">
+										</div>
+									</div>
+								</div>									
 							</div>
 						</section>
 						<section>
 							<div class="form-group">
-								<div class="form-inline">
-									<textarea class="form-control product-description" placeholder="Product Specifications"></textarea>
-								</div>
+								<label for="specification" class="sr-only"></label>
+								<textarea id="specification" name="specification" class="form-control product-description" placeholder="Item Specifications"></textarea>
 							</div>
 						</section>
 						<section>
-							<div class="form-group">
-								<div class="form-inline">
-									<input type="text" class="form-control" placeholder="Quantity">
-									<input type="text" class="form-control" placeholder="Unit Price">
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="qty" class="sr-only"></label>
+										<input type="text" id="qty" name="qty" class="form-control" placeholder="Quantity">
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="form-group">
+										<label for="price" class="sr-only"></label>
+										<div class="input-group">
+											<div class="input-group-addon"><span>¥</span></div>
+											<input type="text" id="price" name="price" class="form-control" placeholder="Unit Price in Yuan">
+										</div>
+									</div>
 								</div>
 							</div>
 						</section>
@@ -324,12 +347,58 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">Save and Leave</button>
-				<button type="button" class="btn btn-primary">Save and Add More Item</button>
+				<button type="button" class="btn btn-primary" onClick="AddItem(false)">Save and Leave</button>
+				<button type="button" class="btn btn-primary" onClick="AddItem(true)">Save and Add More Item</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Add Item Modal -->
+@stop
 
+@section('customJavascript')
+<script type="text/javascript">
+function AddItem(bool){
+	if($('#name').val()==""){
+		$('#name').parent('div').addClass('has-error');
+		return false;
+	}
+	$('#name').parent('div').removeClass('has-error');
+
+	if($('#url').val()==""){
+		$('#url').parent('div').addClass('has-error');
+		return false;
+	}
+	$('#url').parent('div').removeClass('has-error');
+
+	if($('#specification').val()==""){
+		$('#specification').parent('div').addClass('has-error');
+		return false;
+	}
+	$('#specification').parent('div').removeClass('has-error');
+
+	if($('#qty').val()==""){
+		$('#qty').parent('div').addClass('has-error');
+		return false;
+	}
+	if($('#qty').val().match(/^\d+$/) == null){
+		$('#qty').parent('div').addClass('has-error');
+		return false;
+	}
+	$('#qty').parent('div').removeClass('has-error');
+
+	if($('#price').val()==""){
+		$('#price').parent('div').addClass('has-error');
+		return false;
+	}
+	if($('#price').val().match(/^\d{0,6}(\.\d{1,4})?$/) == null){
+		$('#price').parent('div').addClass('has-error');
+		return false;
+	}
+	$('#price').parent('div').removeClass('has-error');
+
+	
+
+}
+</script>
 @stop

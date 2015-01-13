@@ -32,9 +32,9 @@
 </head>
 <body>
      @if (!Sentry::check())
-          @include('frontend.guest.navigation')
+     @include('frontend.guest.navigation')
      @else
-          @include('frontend.member.navigation')
+     @include('frontend.member.navigation')
      @endif
      @yield('before_hgroup')
      <div class="main">
@@ -43,7 +43,7 @@
                @yield('content')
           </div>
      </div>
-     @yield('modals');
+     @yield('modals')
      @include('frontend.common.footer')
 
      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -58,6 +58,8 @@
      {{HTML::script("/assets/js/snap.svg-min.js");}}
      {{HTML::script("/assets/js/restart_theme.js");}}
      {{HTML::script("/assets/js/collapser.js");}}
+     @yield('pageRelatedScripts')
+     @yield('customJavascript')
 </body>
 
 </html>

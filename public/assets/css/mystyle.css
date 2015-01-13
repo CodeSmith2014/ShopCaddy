@@ -1,3 +1,47 @@
+.td-sw{
+  width: 30px;
+}
+
+.t-center{
+  text-align: center;
+}
+
+.caddy-action-tabs{
+  margin-bottom: 15px;
+}
+
+.caddy-action-tabs li.pull-right a{
+  background-color: #999;
+  color:#fff;
+}
+
+#addItemToBasket a, #trackOrder a{
+  cursor:pointer;
+}
+
+blockquote.left{
+  text-align: left;
+  border-left: 5px solid #999999;
+}
+
+blockquote.right.pull-right{
+  text-align: right;
+  border-right: 5px solid #999999;
+}
+
+.pricing_plan{
+  margin: 20px 0 20px;
+  padding: 15px 0 15px;
+}
+
+ul.caddy-action-tabs li+li{
+  margin-left: 10px;
+}
+
+section.paypal-topup{
+  padding: 10px 20px;
+}
+
 section.addresses-container{
 	border: 1px solid #e7e7e7;
 	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
@@ -7,5 +51,9 @@ section.addresses-container{
 }
 
 section.addresses-container h5{
-font-weight: bold;
-	}
+	font-weight: bold;
+}
+
+.modal-header p{
+  padding-top: 10px;
+}

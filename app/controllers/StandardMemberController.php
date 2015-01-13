@@ -26,7 +26,7 @@ class StandardMemberController extends \BaseController {
 
 	public function getForwarding()
 	{
-		return View::make('frontend.member.credits');
+		return View::make('frontend.member.forwarding');
 	}
 
 }
