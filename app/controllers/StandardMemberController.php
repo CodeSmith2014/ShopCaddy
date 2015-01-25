@@ -18,15 +18,4 @@ class StandardMemberController extends \BaseController {
 	{
 		return View::make('frontend.member.credits');
 	}
-
-	public function getAssistedPurchase()
-	{
-		return View::make('frontend.member.assisted-purchase');
-	}
-
-	public function getForwarding()
-	{
-		return View::make('frontend.member.forwarding');
-	}
-
 }

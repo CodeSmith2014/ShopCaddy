@@ -24,8 +24,8 @@
                                    <span class="caret"></span>
                               </a>
                               <ul class="dropdown-menu">
-                                   <li><a href="{{URL::route('assisted-purchase')}}">Assisted Purchase</a></li>
-                                   <li><a href="{{URL::route('forwarding')}}">Forwarding Service</a></li>
+                                   <li><a href="{{URL::route('services.assisted-purchase.index')}}">Assisted Purchase</a></li>
+                                   <li><a href="{{URL::route('services.forwarding.index')}}">Forwarding Service</a></li>
                               </ul>
                          </li>
                          <li class="dropdown">

@@ -11,6 +11,13 @@
 |
 */
 
+// Route::get('/',function(){
+// 	$i = Item::where('status_code',1)->where('member_id',1)->get();
+// 	foreach($i as $ii){
+// 		echo $ii->name."<br/>";
+// 	}
+// });
+
 # CSRF Protection
 Route::when('*', 'csrf', ['POST', 'PUT', 'PATCH', 'DELETE']);
 
@@ -58,7 +65,6 @@ Route::group(['before' => 'auth|standardMember'], function()
 	Route::get('memberProtected', 'StandardMemberController@getMemberProtected');
 	Route::get('credits', ['as' => 'credits', 'uses' => 'StandardMemberController@getCredits']);
 	Route::get('services/assisted-purchase', ['as' => 'assisted-purchase', 'uses' => 'StandardMemberController@getAssistedPurchase']);
-	Route::get('services/forwarding', ['as' => 'forwarding', 'uses' => 'StandardMemberController@getForwarding']);
 
 	Route::group(array('prefix' => 'account'), function()
 	{
@@ -86,7 +92,23 @@ Route::group(['before' => 'auth|standardMember'], function()
 				return View::make('frontend.member.account.address');
 			}));
 	});
-		
+
+
+# Services Routes
+	Route::group(array('prefix'=>'services'),function()
+	{
+		Route::post('assisted-purchase/checkout', array(
+			"as"=>"doCheckout",
+			"uses"=>"AssistPurchaseController@doCheckout"
+			));
+		Route::get('assisted-purchase/getCheckout', array(
+			"as"=>"getCheckout",
+			"uses"=>"AssistPurchaseController@getCheckout"
+			));
+		Route::resource('assisted-purchase','AssistPurchaseController');
+		Route::resource('forwarding','ForwardingController');
+	});
+
 });
 
 

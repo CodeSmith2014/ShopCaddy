@@ -9,6 +9,7 @@
           @show
      </title>
      <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta name="_token" content="{{ csrf_token() }}" />
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
      <!-- #CSS Links -->
@@ -58,6 +59,7 @@
      {{HTML::script("/assets/js/snap.svg-min.js");}}
      {{HTML::script("/assets/js/restart_theme.js");}}
      {{HTML::script("/assets/js/collapser.js");}}
+     {{HTML::script("/assets/js/global.js");}}
      @yield('pageRelatedScripts')
      @yield('customJavascript')
 </body>
