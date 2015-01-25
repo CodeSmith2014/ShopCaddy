@@ -1,9 +1,13 @@
 .td-sw{
-  width: 30px;
+  min-width: 50px;
 }
 
 .t-center{
   text-align: center;
+}
+
+#orders table tbody tr td{
+  vertical-align: middle;
 }
 
 .caddy-action-tabs{
@@ -15,7 +19,7 @@
   color:#fff;
 }
 
-#addItemToBasket a, #trackOrder a{
+#addItemToBasket a, #trackOrder a, .checkoutBtn a, .orderTab{
   cursor:pointer;
 }
 
