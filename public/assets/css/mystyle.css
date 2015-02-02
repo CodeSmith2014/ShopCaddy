@@ -61,3 +61,7 @@ section.addresses-container h5{
 .modal-header p{
   padding-top: 10px;
 }
+
+.help-block {
+  color: red;
+}

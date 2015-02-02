@@ -36,8 +36,7 @@ Route::group(['before' => 'redirectUser'], function()
 });
 
 # Registration
-
-
+Route::post('registration', ['as' => 'registration', 'uses' => 'RegistrationController@store']);
 
 # Authentication
 Route::get('login', ['as' => 'login', 'uses' => 'SessionController@create'])->before('guest');
@@ -68,25 +67,15 @@ Route::group(['before' => 'auth|standardMember'], function()
 
 	Route::group(array('prefix' => 'account'), function()
 	{
-		Route::get('/', array(
-			"as"=>"account",function(){
-				return View::make('frontend.member.account.account');
-			}));
+		Route::get('/', ['as' => 'account', 'uses' => 'StandardMemberController@getAccount']);
+		Route::get('edit-name', ['as' => 'edit-name', 'uses' => 'StandardMemberController@editName']);
+		Route::put('update-name', ['as' => 'update-name', 'uses' => 'StandardMemberController@updateName']);
+		Route::get('edit-email', ['as' => 'edit-email', 'uses' => 'StandardMemberController@editEmail']);
+		Route::put('update-email', ['as' => 'update-email', 'uses' => 'StandardMemberController@updateEmail']);
+		Route::get('edit-mobile', ['as' => 'edit-mobile', 'uses' => 'StandardMemberController@editMobile']);
+		Route::put('update-mobile', ['as' => 'update-mobile', 'uses' => 'StandardMemberController@updateMobile']);
 
-		Route::get('edit-name', array(
-			"as"=>"edit-name",function(){
-				return View::make('frontend.member.account.edit-name');
-			}));
 
-		Route::get('edit-email', array(
-			"as"=>"edit-email",function(){
-				return View::make('frontend.member.account.edit-email');
-			}));
-
-		Route::get('edit-mobile-no', array(
-			"as"=>"edit-mobile",function(){
-				return View::make('frontend.member.account.edit-mobile');
-			}));
 		Route::get('addresses', array(
 			"as"=>"addresses",function(){
 				return View::make('frontend.member.account.address');

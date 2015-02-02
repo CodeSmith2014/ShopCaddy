@@ -26,15 +26,16 @@
 	<div class="row">
 		@include('frontend.member.account.navigation')
 		<div class="col-md-9 col-lg-9">
-			{{Form::open(array('class'=>'account_info','url'=>'abc'))}}
+			{{Form::open(array('url'=>URL::route('update-mobile'), 'class'=>'account_info', 'method' => 'PUT'))}}
 			<div class="form-group">
 				<label>Old Mobile Phone Number: </label>
-				91442353
+				{{ $user->mobile_no }}
 			</div>
 
 			<div class="form-group">
-				<label for="mobile" class="control-label">New Mobile Phone Number</label>
-				<input type="text" class="form-control" name="mobile">
+				{{ Form::label('mobile_no', 'New Mobile Phone Number', array('class'=>'control-label'))}}
+				{{ Form::text('mobile_no', null, array('class'=>'form-control'))}}
+				@if ($errors->has('mobile_no')) <p class="help-block">{{ $errors->first('mobile_no') }}</p> @endif
 			</div>
 
 			<button class="btn btn-primary pull-right" type="submit">Save Change</button>

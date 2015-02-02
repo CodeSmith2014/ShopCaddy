@@ -53,20 +53,22 @@
 								<div class="row">
 									<div class="col-lg-2"></div>
 									<div class="col-lg-8">
-										<input id="Username" name="Username" placeholder="Username" class="form-control" required="" type="text">
-										<input id="Emailaddress" name="Email address" placeholder="Email address" class="form-control" required="" type="text">
-										<input id="CfmEmailaddress" name="Cfm Email address" placeholder="Confirm Email address" class="form-control" required="" type="text">
-										<input id="Password" name="Password" placeholder="Password" class="form-control" required="" type="password">
-										<div class="checkbox">
-											<label class="">
-												<input name="checkboxes" value="Option one" type="checkbox">
-												I agree to the <a href="/">terms and conditions</a>
-											</label>
-										</div>
+										{{ Form::open(['route' => 'registration.store']) }}
+											<input id="username" name="username" placeholder="Username" class="form-control" required="" type="text">
+											<input id="email" name="email" placeholder="Email address" class="form-control" required="" type="text">
+											<input id="email-confirmation" name="email-confirmation" placeholder="Confirm Email address" class="form-control" required="" type="text">
+											<input id="password" name="password" placeholder="Password" class="form-control" required="" type="password">
+											<div class="checkbox">
+												<label class="">
+													<input name="checkboxes" value="Option one" type="checkbox">
+													I agree to the <a href="/">terms and conditions</a>
+												</label>
+											</div>
+											<button type="submit" class="btn btn-success btn-lg">Create account</button>
+										{{ Form::close() }}
 									</div>
 									<div class="col-lg-2"></div>
 								</div>
-								<button type="submit" class="btn btn-success btn-lg">Create account</button>
 							</fieldset>
 						</form>
 					</div>
