@@ -95,7 +95,6 @@ Route::group(['before' => 'auth|standardMember'], function()
 	Route::group(array('prefix' => 'credits'), function()
 	{
 		Route::get('/', ['as' => 'credits', 'uses' => 'StandardMemberController@getCredits']);
-		Route::post('transactions', ['as' => 'transactions', 'uses' => 'TransactionController@getTransactions']);
 		Route::post('paypal_topup', array(
 			'as' => 'paypal_topup',
 			'uses' => 'PaypalController@postPayment',
