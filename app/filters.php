@@ -55,6 +55,14 @@ Route::filter('user', function()
     if (!$user->inGroup($usergroup)) return Redirect::to('login');
 });
 
+# admin
+Route::filter('admin', function()
+{
+	$user = Sentry::getUser();
+    $usergroup = Sentry::findGroupByName('Admin');
+    if (!$user->inGroup($usergroup)) return Redirect::to('login');
+});
+
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();

@@ -12,12 +12,18 @@ class SentryGroupSeeder extends Seeder {
 		DB::table('groups')->delete();
 
 		Sentry::getGroupProvider()->create(array(
-	        'name'        => 'Members',
-	        ));
+			'name'        => 'Admin',
+			));
 
 		Sentry::getGroupProvider()->create(array(
-	        'name'        => 'Users',
-	        ));
+			'name'        => 'Members',
+			));
+
+		Sentry::getGroupProvider()->create(array(
+			'name'        => 'Users',
+			));
+
+
 
 	}
 

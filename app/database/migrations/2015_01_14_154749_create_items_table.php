@@ -21,6 +21,7 @@ class CreateItemsTable extends Migration {
 			$table->integer('qty');
 			$table->decimal('price',16,5);
 			$table->decimal('total',16,5);
+			$table->decimal('kg',16,2);
 			$table->integer('order_id')->nullable();
 			$table->integer('member_id');
 			$table->softDeletes();

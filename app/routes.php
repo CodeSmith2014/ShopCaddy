@@ -63,7 +63,6 @@ Route::resource('sessions', 'SessionController', ['only' => ['create','store','d
 Route::group(['before' => 'auth|standardMember'], function()
 {
 	Route::get('memberProtected', 'StandardMemberController@getMemberProtected');
-	Route::get('credits', ['as' => 'credits', 'uses' => 'StandardMemberController@getCredits']);
 	Route::get('services/assisted-purchase', ['as' => 'assisted-purchase', 'uses' => 'StandardMemberController@getAssistedPurchase']);
 
 	Route::group(array('prefix' => 'account'), function()
@@ -93,6 +92,21 @@ Route::group(['before' => 'auth|standardMember'], function()
 			}));
 	});
 
+	Route::group(array('prefix' => 'credits'), function()
+	{
+		Route::get('/', ['as' => 'credits', 'uses' => 'StandardMemberController@getCredits']);
+		Route::post('transactions', ['as' => 'transactions', 'uses' => 'TransactionController@getTransactions']);
+		Route::post('paypal_topup', array(
+			'as' => 'paypal_topup',
+			'uses' => 'PaypalController@postPayment',
+			));
+		Route::get('paypal_topup/status', array(
+			'as' => 'paypal_topup.status',
+			'uses' => 'PaypalController@getPaymentStatus',
+			));
+		Route::resource('ibank','IbankController');
+	});
+
 
 # Services Routes
 	Route::group(array('prefix'=>'services'),function()
@@ -111,6 +125,28 @@ Route::group(['before' => 'auth|standardMember'], function()
 
 });
 
+/*
+|--------------------------------------------------------------------------
+| Administrator Area
+|--------------------------------------------------------------------------
+|
+|	These are the routes that require Administrator to login first before
+|	they can access to these pages.  
+|
+|
+*/
+
+# Administrator Routes
+Route::group(['before' => 'auth|admin'], function()
+{
+	Route::group(array('prefix' => 'admin'), function()
+	{
+		Route::get('/', array(
+			"as"=>"dashboard",function(){
+				return View::make('backend.master');
+			}));
+	});
+});
 
 
 

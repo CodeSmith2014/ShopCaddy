@@ -1468,7 +1468,7 @@ th {
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
 }
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
@@ -4445,6 +4445,7 @@ a.thumbnail.active {
 .alert > p,
 .alert > ul {
   margin-bottom: 0;
+  padding-left: 20px;
 }
 .alert > p + p {
   margin-top: 5px;
@@ -6702,9 +6703,9 @@ figure img {
   top: 0px;
 }
 .pricing_plan:hover {
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+ /* -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);*/
 }
 .pricing_plan h3 {
   background-color: #ffffff;
