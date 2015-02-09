@@ -20,8 +20,6 @@
 </section>
 @stop
 
-{{ $user }}
-
 @section('content')
 <section class="account_info">
 	<div class="row">

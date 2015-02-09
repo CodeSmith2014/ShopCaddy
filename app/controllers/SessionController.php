@@ -10,7 +10,8 @@ class SessionController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('frontend.guest.register-login');
+		$messages = Session::get('message');
+		return View::make('frontend.guest.register-login')->with('message',$messages);
 	}
 
 
@@ -35,12 +36,12 @@ class SessionController extends \BaseController {
 
 		catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
 		{
-		    return Redirect::back()->withInput()->withErrorMessage('Invalid credentials provided.');
+			return Redirect::route('login')->withErrors(['signin'=>'Invalid credentials provided.']);
 		}
 
 		catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
 		{
-		    return Redirect::back()->withInput()->withErrorMessage('Account not activated.');
+			return Redirect::route('login')->withErrors(['signin'=>'Account not activated.']);
 		}
 
 		// Logged in successfully - redirect
@@ -51,7 +52,6 @@ class SessionController extends \BaseController {
 	    if ($user->inGroup($membergroup)) return Redirect::intended('/');
 	    elseif ($user->inGroup($usergroup)) return Redirect::intended('user');
 	}
-
 
 	/**
 	 * Remove the specified resource from storage.

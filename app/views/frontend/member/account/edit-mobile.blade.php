@@ -35,7 +35,6 @@
 			<div class="form-group">
 				{{ Form::label('mobile_no', 'New Mobile Phone Number', array('class'=>'control-label'))}}
 				{{ Form::text('mobile_no', null, array('class'=>'form-control'))}}
-				@if ($errors->has('mobile_no')) <p class="help-block">{{ $errors->first('mobile_no') }}</p> @endif
 			</div>
 
 			<button class="btn btn-primary pull-right" type="submit">Save Change</button>

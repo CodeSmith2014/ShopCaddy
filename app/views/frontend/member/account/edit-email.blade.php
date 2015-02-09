@@ -40,7 +40,6 @@
 			<div class="form-group">
 				{{ Form::label('email_confirmation', 'Confirm New Email Address', array('class'=>'control-label'))}}
 				{{ Form::text('email_confirmation', null, array('class'=>'form-control'))}}
-				@if ($errors->has('email')) <p class="help-block">{{ $errors->first('email') }}</p> @endif
 			</div>
 
 			<button class="btn btn-primary pull-right" type="submit">Save Change</button>

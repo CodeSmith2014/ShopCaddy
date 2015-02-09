@@ -21,8 +21,6 @@
 </section>
 @stop
 
-{{ $user }}
-
 @section('content')
 <section class="account_info">
 	<div class="row">
@@ -32,7 +30,6 @@
 			<div class="form-group">
 				{{ Form::label('name', 'What is your new name?', array('class'=>'control-label'))}}
 				{{ Form::text('name', $user->name, array('class'=>'form-control'))}}
-				@if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
 			</div>
 			<button class="btn btn-primary pull-right" type="submit">Save Change</button>
 			{{Form::close()}}

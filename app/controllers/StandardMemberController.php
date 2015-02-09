@@ -45,7 +45,6 @@ class StandardMemberController extends \BaseController {
 		if($validator->fails()){
 
 			// redirect back to form with errors from validator
-			$messages = $validator->messages();
 			return Redirect::route('edit-name')->withErrors($validator)->withInput();
 		}
 		else{
@@ -80,7 +79,6 @@ class StandardMemberController extends \BaseController {
 		if($validator->fails()){
 
 			// redirect back to form with errors from validator
-			$messages = $validator->messages();
 			return Redirect::route('edit-email')->withErrors($validator)->withInput();
 		}
 		else{
@@ -115,7 +113,6 @@ class StandardMemberController extends \BaseController {
 		if($validator->fails()){
 
 			// redirect back to form with errors from validator
-			$messages = $validator->messages();
 			return Redirect::route('edit-mobile')->withErrors($validator)->withInput();
 		}
 		else{

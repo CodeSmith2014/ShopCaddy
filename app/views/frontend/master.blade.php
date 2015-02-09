@@ -41,6 +41,17 @@
      <div class="main">
           <div class="container">
                @yield('hgroup')
+@if(isset($message))
+     {{ $message }}
+@endif
+@if($errors->has())
+     <div class="alert alert-danger" role="alert">
+          <p>The following error(s) have been found:</p>
+     @foreach ($errors->all() as $error)
+          <li>{{ ($error) }}</li>
+     @endforeach
+     </div>
+@endif
                @yield('content')
           </div>
      </div>

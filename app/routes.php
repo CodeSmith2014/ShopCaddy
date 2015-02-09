@@ -36,7 +36,10 @@ Route::group(['before' => 'redirectUser'], function()
 });
 
 # Registration
-Route::post('registration', ['as' => 'registration', 'uses' => 'RegistrationController@store']);
+Route::group(['before' => 'guest'], function()
+{
+	Route::post('login', ['as' => 'registration.store', 'uses' => 'RegistrationController@store']);
+});
 
 # Authentication
 Route::get('login', ['as' => 'login', 'uses' => 'SessionController@create'])->before('guest');
@@ -44,7 +47,13 @@ Route::get('logout', ['as' => 'logout', 'uses' => 'SessionController@destroy']);
 Route::resource('sessions', 'SessionController', ['only' => ['create','store','destroy']]);
 
 # Forgotten Password
-
+Route::group(['before' => 'guest'], function()
+{
+	Route::get('forgot-password', ['as' => 'forgot.create', 'uses' => 'RecoveryController@getForgot']);
+	Route::post('forgot-password', ['as' => 'forgot.store', 'uses' => 'RecoveryController@postForgot']);
+	Route::get('reset-password/{token}', ['as' => 'reset.create', 'uses' => 'RecoveryController@getReset']);
+	Route::post('reset-password/{token}', ['as' => 'reset.store', 'uses' => 'RecoveryController@postReset']);
+});
 
 
 /*
