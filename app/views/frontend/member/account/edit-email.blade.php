@@ -26,20 +26,20 @@
 	<div class="row">
 		@include('frontend.member.account.navigation')
 		<div class="col-md-9 col-lg-9">
-			{{Form::open(array('class'=>'account_info','url'=>'abc'))}}
+			{{Form::open(array('url'=>URL::route('update-email'), 'class'=>'account_info', 'method' => 'PUT'))}}
 			<div class="form-group">
 				<label>Old Email Address: </label>
-				t.siangyee@gmaill.com
+				{{ $user->email }}
 			</div>
 
 			<div class="form-group">
-				<label for="email" class="control-label">New Email Address</label>
-				<input type="text" class="form-control" name="email">
+				{{ Form::label('email', 'New Email Address', array('class'=>'control-label'))}}
+				{{ Form::text('email', null, array('class'=>'form-control'))}}
 			</div>
 
 			<div class="form-group">
-				<label for="cfm-email" class="control-label">Confirm New Email Address</label>
-				<input type="text" class="form-control" name="cfm-email">
+				{{ Form::label('email_confirmation', 'Confirm New Email Address', array('class'=>'control-label'))}}
+				{{ Form::text('email_confirmation', null, array('class'=>'form-control'))}}
 			</div>
 
 			<button class="btn btn-primary pull-right" type="submit">Save Change</button>

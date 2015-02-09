@@ -42,23 +42,20 @@
      <div class="main">
           <div class="container">
                @yield('hgroup')
-               @if($errors->count() > 0)
-               <div class="alert alert-block alert-danger">
-                    <ul style="list-style:none;">
-                         @foreach($errors->all() as $error_message)
-                         <li>{{$error_message}}</li>
-                         @endforeach
-                    </ul>
+
+               @if(isset($message))
+               {{ $message }}
+               @endif
+               
+               @if($errors->has())
+               <div class="alert alert-danger" role="alert">
+                    <p>The following error(s) have been found:</p>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ ($error) }}</li>
+                    @endforeach
                </div>
                @endif
 
-               @if(isset($message))
-               <div class="alert alert-block alert-success">
-                    <ul style="list-style:none;">
-                         <li>{{$message}}</li>
-                    </ul>
-               </div>
-               @endif             
                @yield('content')
           </div>
      </div>

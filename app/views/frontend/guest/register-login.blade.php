@@ -9,10 +9,10 @@
 <div class="main">
 	<div class="container">
 		<section class="hgroup">
-			<h1>Register or Sign in</h1>
+			<h1>Register/Login</h1>
 			<ul class="breadcrumb pull-right">
-				<li><a href="index.html">Home</a> </li>
-				<li class="active">Register of Sign in</li>
+				<li>{{ HTML::link('/', 'Home') }}</li>
+				<li class="active">Register/Login</li>
 			</ul>
 		</section>
 		<section>
@@ -23,17 +23,17 @@
 						<div class="row">
 							<div class="col-lg-2"></div>
 							<div class="form col-lg-8">
-								{{ Form::open(['route' => 'sessions.store']) }}
-									<input placeholder="Email" class="form-control" required="required" name="email" type="text">
-									<input placeholder="Password" class="form-control" required="required" name="password" type="password" value="">
+								{{Form::open(array('url'=>URL::route('sessions.store'), 'method'=>'POST'))}}
+									{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email', 'required'=>''))}}
+									{{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password', 'required'=>''))}}
 									<div class="forgot">
 										<div class="checkbox">
 											<label class="">
-												<input type="checkbox">
+												{{ Form::checkbox('remember', 'remember') }}
 												Remember me 
 											</label>
 										</div>
-										<a href="#">Forgot password?</a>
+										{{ HTML::link('/forgot-password', 'Forgot password?') }}
 									</div>
 									<button type="submit" class="btn btn-primary btn-lg">Sign in</button>
 								{{ Form::close() }}
@@ -42,33 +42,32 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-sm-6 col-md-6">
 					<div class="signup">
-						<form>
-							<fieldset>
-								<div class="social_sign">
-									<h3>Don't have a site account yet?</h3>
-								</div>
-								<p class="sign_title">Create one now, it's fast &amp; free!</p>
-								<div class="row">
-									<div class="col-lg-2"></div>
-									<div class="col-lg-8">
-										<input id="Username" name="Username" placeholder="Username" class="form-control" required="" type="text">
-										<input id="Emailaddress" name="Email address" placeholder="Email address" class="form-control" required="" type="text">
-										<input id="CfmEmailaddress" name="Cfm Email address" placeholder="Confirm Email address" class="form-control" required="" type="text">
-										<input id="Password" name="Password" placeholder="Password" class="form-control" required="" type="password">
-										<div class="checkbox">
-											<label class="">
-												<input name="checkboxes" value="Option one" type="checkbox">
-												I agree to the <a href="/">terms and conditions</a>
-											</label>
-										</div>
+						<div class="social_sign">
+							<h3>Don't have a site account yet?</h3>
+						</div>
+						<p class="sign_title">Create one now, it's fast &amp; free!</p>
+						<div class="row">
+							<div class="col-lg-2"></div>
+							<div class="col-lg-8">
+								{{Form::open(array('url'=>URL::route('registration.store'), 'method' => 'POST'))}}
+									{{ Form::text('username', null, array('class'=>'form-control', 'placeholder'=>'Username', 'required'=>''))}}
+									{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email address', 'required'=>''))}}
+									{{ Form::text('email_confirmation', null, array('class'=>'form-control', 'placeholder'=>'Confirm Email address', 'required'=>''))}}
+									{{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password', 'required'=>''))}}								
+									<div class="checkbox">
+										<label class="">
+											{{ Form::checkbox('checkbox', 'yes') }}
+											I agree to the {{ HTML::link('/terms-conditions', 'terms and conditions', array('target'=>'_blank')) }}
+										</label>
 									</div>
-									<div class="col-lg-2"></div>
-								</div>
-								<button type="submit" class="btn btn-success btn-lg">Create account</button>
-							</fieldset>
-						</form>
+									<button type="submit" class="btn btn-success btn-lg">Create account</button>
+								{{ Form::close() }}
+							</div>
+							<div class="col-lg-2"></div>
+						</div>
 					</div>
 				</div>
 			</div>

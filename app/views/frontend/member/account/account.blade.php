@@ -29,13 +29,13 @@
 				<div class="col-md-6 col-sm-6">
 					<div class="form-group">
 						<label for="username" class="control-label">Username</label>
-						<input type="text" class="form-control" name="username" disabled="">
+						<input type="text" class="form-control" name="username" value="{{ $user->username }}" disabled="">
 					</div>
 
 					<div class="form-group">
 						<label for="email" class="control-label">Email</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="email" disabled="">
+							<input type="text" class="form-control" name="email" value="{{ $user->email }}" disabled="">
 							<div class="input-group-addon"><a href="{{URL::route('edit-email')}}">Edit</a></div>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 					<div class="form-group">
 						<label for="name" class="control-label">Name</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="name" disabled="">
+							<input type="text" class="form-control" name="name" value="{{ $user->name }}" disabled="">
 							<div class="input-group-addon"><a href="{{URL::route('edit-name')}}">Edit</a></div>
 						</div>
 					</div>
@@ -52,7 +52,7 @@
 					<div class="form-group">
 						<label for="mobile" class="control-label">Mobile No.</label>
 						<div class="input-group">
-							<input type="text" class="form-control" name="mobile" disabled="">
+							<input type="text" class="form-control" name="mobile" value="{{ $user->mobile_no }}" disabled="">
 							<div class="input-group-addon"><a href="{{URL::route('edit-mobile')}}">Edit</a></div>
 						</div>
 					</div>

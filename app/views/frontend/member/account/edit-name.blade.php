@@ -26,10 +26,10 @@
 	<div class="row">
 		@include('frontend.member.account.navigation')
 		<div class="col-md-9 col-lg-9">
-			{{Form::open(array('class'=>'account_info','url'=>'abc'))}}
+			{{Form::open(array('url'=>URL::route('update-name'), 'class'=>'account_info', 'method' => 'PUT'))}}
 			<div class="form-group">
-				<label>What is your new name?</label>
-				<input type="text" class="form-control" name="name">
+				{{ Form::label('name', 'What is your new name?', array('class'=>'control-label'))}}
+				{{ Form::text('name', $user->name, array('class'=>'form-control'))}}
 			</div>
 			<button class="btn btn-primary pull-right" type="submit">Save Change</button>
 			{{Form::close()}}

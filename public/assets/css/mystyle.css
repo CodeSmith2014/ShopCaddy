@@ -62,6 +62,10 @@ section.addresses-container h5{
   padding-top: 10px;
 }
 
+
 #ui-datepicker-div{
   z-index: 3 !important;
+}
+.help-block {
+  color: red;
 }
