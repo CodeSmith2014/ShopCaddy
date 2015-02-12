@@ -82,7 +82,8 @@ Route::group(['before' => 'auth|standardMember'], function()
 		Route::put('update-email', ['as' => 'update-email', 'uses' => 'StandardMemberController@updateEmail']);
 		Route::get('edit-mobile', ['as' => 'edit-mobile', 'uses' => 'StandardMemberController@editMobile']);
 		Route::put('update-mobile', ['as' => 'update-mobile', 'uses' => 'StandardMemberController@updateMobile']);
-
+		Route::get('edit-password', ['as' => 'edit-password', 'uses' => 'StandardMemberController@editPassword']);
+		Route::put('update-password', ['as' => 'update-password', 'uses' => 'StandardMemberController@updatePassword']);
 
 		Route::get('addresses', array(
 			"as"=>"addresses",function(){

@@ -55,7 +55,7 @@
 								{{Form::open(array('url'=>URL::route('registration.store'), 'method' => 'POST'))}}
 									{{ Form::text('username', null, array('class'=>'form-control', 'placeholder'=>'Username', 'required'=>''))}}
 									{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email address', 'required'=>''))}}
-									{{ Form::text('email_confirmation', null, array('class'=>'form-control', 'placeholder'=>'Confirm Email address', 'required'=>''))}}
+									{{ Form::text('email_confirmation', null, array('class'=>'form-control', 'placeholder'=>'Email address Confirmation', 'required'=>''))}}
 									{{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password', 'required'=>''))}}								
 									<div class="checkbox">
 										<label class="">

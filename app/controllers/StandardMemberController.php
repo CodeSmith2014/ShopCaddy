@@ -44,7 +44,8 @@ class StandardMemberController extends \BaseController {
 	public function getAccount()
 	{
 		$user = Sentry::getUser();
-		return View::make('frontend.member.account.account')->with('user',$user);
+		$messages = Session::get('message');
+		return View::make('frontend.member.account.account')->with('user',$user)->with('message', $messages);
 	}
 
 	public function editName()
@@ -77,7 +78,7 @@ class StandardMemberController extends \BaseController {
 			$user->save();
 
 			// redirect back
-			return Redirect::route('account');
+			return Redirect::route('account')->with('message','Name Change Successful!');
 		}
 	}
 
@@ -91,7 +92,7 @@ class StandardMemberController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 		$rules = array(
-			'email' => 'required|email|unique:users|confirmed',
+			'new_email' => 'required|email|unique:users|confirmed',
 			);
 		
 		//validate form input with validation rules
@@ -104,14 +105,14 @@ class StandardMemberController extends \BaseController {
 			return Redirect::route('edit-email')->withErrors($validator)->withInput();
 		}
 		else{
-			$user->email = Input::get('email');
+			$user->email = Input::get('new_email');
 
 			// save data
 			$user->touch();
 			$user->save();
 
 			// redirect back
-			return Redirect::route('account');
+			return Redirect::route('account')->with('message','Email Address Change Successful!');
 		}
 	}
 
@@ -125,7 +126,7 @@ class StandardMemberController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 		$rules = array(
-			'mobile_no'=>'required',
+			'new_mobile_phone_number'=>'required',
 			);
 		
 		//validate form input with validation rules
@@ -138,14 +139,59 @@ class StandardMemberController extends \BaseController {
 			return Redirect::route('edit-mobile')->withErrors($validator)->withInput();
 		}
 		else{
-			$user->mobile_no = Input::get('mobile_no');
+			$user->mobile_no = Input::get('new_mobile_phone_number');
 
 			// save data
 			$user->touch();
 			$user->save();
 
 			// redirect back
-			return Redirect::route('account');
+			return Redirect::route('account')->with('message','Mobile Phone Number Change Successful!');
+		}
+	}
+
+	public function editPassword()
+	{
+	    $user = Sentry::getUser();
+	    return View::make('frontend.member.account.edit-password')->with('user',$user);
+	}
+
+	public function updatePassword()
+	{
+		$user = Sentry::getUser();
+		$rules = array(
+			'current_password'=>'required|hashmatch',
+			'new_password'=>'required|min:8|confirmed|different:current_password',
+			);
+
+		//validate form input with validation rules
+		Validator::extend('hashmatch', function($attribute, $value, $parameters){
+			$user = Sentry::getUser();
+			return Hash::check(Input::get('current_password'), $user->password);
+		});
+
+		Validator::replacer('hashmatch', function($message, $attribute, $rule, $parameters)
+		{
+		    return 'The current password must match the account password.';
+		});
+
+		$validator = Validator::make(Input::all(),$rules);
+
+		// if validator failed
+		if($validator->fails()){
+
+			// redirect back to form with errors from validator
+			return Redirect::route('edit-password')->withErrors($validator)->withInput();
+		}
+		else{
+			$user->password = Input::get('new_password');
+
+			// save data
+			$user->touch();
+			$user->save();
+
+			// redirect back
+			return Redirect::route('account')->with('message','Password Change Successful!');
 		}
 	}
 

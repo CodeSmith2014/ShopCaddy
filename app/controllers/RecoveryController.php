@@ -38,7 +38,7 @@ class RecoveryController extends BaseController {
 	public function postReset($token)
 	{
 		$rules = array(
-			'password' => 'required|min:8|confirmed',
+			'new_password' => 'required|min:8|confirmed',
 			);
 
 		//validate form input with validation rules
@@ -60,7 +60,7 @@ class RecoveryController extends BaseController {
 			    if ($user->checkResetPasswordCode($token))
 			    {
 			        // Attempt to reset the user password
-			        if ($user->attemptResetPassword($token, Input::get('password')))
+			        if ($user->attemptResetPassword($token, Input::get('new_password')))
 			        {
 			            // Password reset passed
 			            return Redirect::to('login')->with('message','Password Reset Successful!');

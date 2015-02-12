@@ -33,8 +33,8 @@
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('mobile_no', 'New Mobile Phone Number', array('class'=>'control-label'))}}
-				{{ Form::text('mobile_no', null, array('class'=>'form-control'))}}
+				{{ Form::label('new_mobile_phone_number', 'New Mobile Phone Number', array('class'=>'control-label'))}}
+				{{ Form::text('new_mobile_phone_number', null, array('class'=>'form-control'))}}
 			</div>
 
 			<button class="btn btn-primary pull-right" type="submit">Save Change</button>

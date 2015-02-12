@@ -28,7 +28,7 @@
 							<div class="form col-lg-8">
 								<p class="sign_title">Enter the email address associated with your Shopcaddy.com account, then click Send Email.<br>We'll email you a link to a page where you can easily create a new password.</p>
 								{{Form::open(array('url'=>URL::route('forgot.store'), 'method'=>'POST'))}}
-									{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email', 'required'=>''))}}
+									{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'Email Address', 'required'=>''))}}
 									<button type="submit" class="btn btn-primary btn-lg">Send Email</button>
 								{{ Form::close() }}
 							</div>

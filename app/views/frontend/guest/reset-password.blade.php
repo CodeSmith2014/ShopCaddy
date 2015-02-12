@@ -31,8 +31,8 @@
 							<div class="form col-lg-8">
 								<p class="sign_title">Enter your new password.</p>
 								{{Form::open(array('url'=>URL::route('reset.store', array($token)), 'method'=>'POST'))}}
-									{{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'New password', 'required'=>''))}}
-									{{ Form::password('password_confirmation', array('class'=>'form-control', 'placeholder'=>'Confirm New password', 'required'=>''))}}
+									{{ Form::password('new_password', array('class'=>'form-control', 'placeholder'=>'New Password', 'required'=>''))}}
+									{{ Form::password('new_password_confirmation', array('class'=>'form-control', 'placeholder'=>'New Password Confirmation', 'required'=>''))}}
 									<button type="submit" class="btn btn-primary btn-lg">Send Email</button>
 								{{ Form::close() }}
 							</div>

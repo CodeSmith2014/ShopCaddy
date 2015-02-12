@@ -50,7 +50,7 @@
                               <ul class="dropdown-menu">
                                    <li><a href="/credits">Prepaid Credits</a></li>
                                    <li><a href="/account">Modify Account</a></li>
-                                   <li><a href="#">Change Password</a></li>
+                                   <li><a href="/account/edit-password">Change Password</a></li>
                                    <li><a href="/logout">Logout</a></li>
                               </ul>
                          </li>

@@ -33,13 +33,13 @@
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('email', 'New Email Address', array('class'=>'control-label'))}}
-				{{ Form::text('email', null, array('class'=>'form-control'))}}
+				{{ Form::label('new_email', 'New Email', array('class'=>'control-label'))}}
+				{{ Form::text('new_email', null, array('class'=>'form-control'))}}
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('email_confirmation', 'Confirm New Email Address', array('class'=>'control-label'))}}
-				{{ Form::text('email_confirmation', null, array('class'=>'form-control'))}}
+				{{ Form::label('new_email_confirmation', 'New Email Confirmation', array('class'=>'control-label'))}}
+				{{ Form::text('new_email_confirmation', null, array('class'=>'form-control'))}}
 			</div>
 
 			<button class="btn btn-primary pull-right" type="submit">Save Change</button>
