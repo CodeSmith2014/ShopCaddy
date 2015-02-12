@@ -15,40 +15,31 @@ class SentryUserSeeder extends Seeder {
 
 			'email'    => 'member',
 			'password' => 'member',
-			'first_name' => 'MemberFirstName',
-			'last_name' => 'MemberLastName',
+	        'name' => 'MemberName',
+	        'mobile_no' => '98765432',
 			'activated' => 1,
-			));
+		));
 
 		Sentry::getUserProvider()->create(array(
 			'email'    => 'admin',
 			'password' => 'admin',
-			'first_name' => 'AdminFirstName',
-			'last_name' => 'AdminLastName',
+	        'name' => 'AdminName',
+	        'mobile_no' => '98765432',
 			'activated' => 1,
-			));
+		));
 
 		Sentry::getUserProvider()->create(array(
 			'email'    => 'user',
 			'password' => 'user',
-			'first_name' => 'UserFirstName',
-			'last_name' => 'UserLastName',
+	        'name' => 'UserName',
+	        'mobile_no' => '98765432',
 			'activated' => 1,
-			));
-	    ));
+		));
 
 		Sentry::getUserProvider()->create(array(
 	        'email'    => 'member2',
 	        'password' => 'member2',
 	        'name' => 'MemberName2',
-	        'mobile_no' => '98765432',
-	        'activated' => 1,
-	    ));
-
-		Sentry::getUserProvider()->create(array(
-	        'email'    => 'user',
-	        'password' => 'user',
-			'name' => 'UserName',
 	        'mobile_no' => '98765432',
 	        'activated' => 1,
 	    ));
