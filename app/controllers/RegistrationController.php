@@ -43,7 +43,7 @@ class RegistrationController extends \BaseController {
 			// http://shopcaddy.localhost/verify-activate/wk2dJHluf7GzO1uG0P04gSfTm9NdqE5DBc3vNBGHOe
 
 			// redirect back
-			return Redirect::to('login')->with('message','Account Successfully Created!');
+			return Redirect::to('login')->with('message',"Thanks for signing up.<br>You will receive a verification email to confirm your email address.<br>If you don't see the email in your inbox, please check your spam folder or <a href='/contact-us'>contact support</a>.");
 		}
 	}
 
