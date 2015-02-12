@@ -41,8 +41,8 @@ Route::group(['before' => 'guest'], function()
 	Route::post('login', ['as' => 'registration.store', 'uses' => 'RegistrationController@postRegister']);
 	Route::get('request-activate', ['as' => 'request.create', 'uses' => 'RegistrationController@getRequest']);
 	Route::post('request-activate', ['as' => 'request.store', 'uses' => 'RegistrationController@postRequest']);
-	Route::get('verify-activate/{token}', ['as' => 'verify.create', 'uses' => 'RegistrationController@getVerify']);
-	Route::post('verify-activate/{token}', ['as' => 'verify.store', 'uses' => 'RegistrationController@postVerify']);
+	Route::get('verify-activate/{email}-{token}', ['as' => 'verify.create', 'uses' => 'RegistrationController@getVerify']);
+	Route::post('verify-activate/{email}-{token}', ['as' => 'verify.store', 'uses' => 'RegistrationController@postVerify']);
 });
 
 # Authentication

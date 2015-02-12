@@ -31,7 +31,7 @@
 				<div class="row">
 					<div class="col-lg-2"></div>
 					<div class="form col-lg-8">
-						{{Form::open(array('url'=>URL::route('verify.store', array($token)), 'method'=>'POST'))}}
+						{{Form::open(array('url'=>URL::route('verify.store', array($email, $token)), 'id'=>'activate-submit', 'method'=>'POST'))}}
 							<button type="submit" class="btn btn-primary btn-lg">Activate</button>
 						{{ Form::close() }}
 					</div>

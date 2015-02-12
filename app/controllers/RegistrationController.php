@@ -84,18 +84,18 @@ class RegistrationController extends \BaseController {
 		}
 	}
 
-	public function getVerify($token)
+	public function getVerify($email, $token)
 	{
 		if (is_null($token)) App::abort(404);
-		return View::make('frontend.guest.verify-activate')->with('token', $token);
+		return View::make('frontend.guest.verify-activate')->with('email',$email)->with('token', $token);
 	}
 
-	public function postVerify($token)
+	public function postVerify($email, $token)
 	{
 		try
 		{
-		    // Find the user using the token
-		    $user = Sentry::findUserByActivationCode($token);
+		    // Find the user using the email
+		    $user = Sentry::findUserByLogin($email);
 
 		    // Attempt to activate the user
 		    if ($user->attemptActivation($token))
