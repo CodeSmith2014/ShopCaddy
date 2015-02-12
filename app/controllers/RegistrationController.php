@@ -64,7 +64,7 @@ class RegistrationController extends \BaseController {
 		    if ($user->isActivated())
 		    {
 		        // User is Activated
-		        return Redirect::route('request.create')->with('message','Your account is already activated. Click <a href="/login">here</a> to go to the login page.');
+		        return Redirect::route('request.create')->withErrors(['active'=>'Your account is already activated. Click <a href="/login">here</a> to go to the login page.']);
 		    }
 		    else
 		    {
