@@ -19,11 +19,11 @@ class RecoveryController extends BaseController {
 		    $resetCode = $user->getResetPasswordCode();
 
 		    // Now you can send this code to your user via email for example.
-		    // email link should be shopcaddy/reset-password/{id}{token}
+		    // email link should be shopcaddy/reset-password/{token}
 		}
 		catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
 		{
-		    return Redirect::route('forgot.create')->withErrors(['email'=>'User was not found']);
+		    return Redirect::route('forgot.create')->withErrors(['email'=>'Email was not found']);
 		}
 
 		return Redirect::route('forgot.create')->with('message','An email has been sent to '.(Input::get('email').'.'));
@@ -53,7 +53,7 @@ class RecoveryController extends BaseController {
 		else {
 			try
 			{
-			    // Find the user using the user id
+			    // Find the user using the token
 			    $user = Sentry::findUserByResetPasswordCode($token);
 
 			    // Check if the reset password code is valid
@@ -63,23 +63,23 @@ class RecoveryController extends BaseController {
 			        if ($user->attemptResetPassword($token, Input::get('new_password')))
 			        {
 			            // Password reset passed
-			            return Redirect::to('login')->with('message','Password Reset Successful!');
+			            return Redirect::to('login')->with('message','Password Successfully Reset!');
 			        }
 			        else
 			        {
 			            // Password reset failed
-			            return Redirect::back()->withErrors(['passcode'=>'Something went wrong, request for another password reset.']);
+			            return Redirect::back()->withErrors(['passcode'=>'Something went wrong, request for another password recovery email <a href="/forgot-password">here</a>.']);
 			        }
 			    }
 			    else
 			    {
 			        // The provided password reset code is Invalid
-			        return Redirect::back()->withErrors(['passcode'=>'Something went wrong, request for another password reset.']);
+			        return Redirect::back()->withErrors(['passcode'=>'Something went wrong, request for another password recovery email <a href="/forgot-password">here</a>.']);
 			    }
 			}
 			catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
 			{
-			    return Redirect::back()->withErrors(['passcode'=>'Something went wrong, request for another password reset.']);
+			    return Redirect::back()->withErrors(['passcode'=>'Something went wrong, request for another password recovery email <a href="/forgot-password">here</a>.']);
 			}
 		}
 	}

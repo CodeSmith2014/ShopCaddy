@@ -78,7 +78,7 @@ class StandardMemberController extends \BaseController {
 			$user->save();
 
 			// redirect back
-			return Redirect::route('account')->with('message','Name Change Successful!');
+			return Redirect::route('account')->with('message','Name Successfully Changed!');
 		}
 	}
 
@@ -112,7 +112,7 @@ class StandardMemberController extends \BaseController {
 			$user->save();
 
 			// redirect back
-			return Redirect::route('account')->with('message','Email Address Change Successful!');
+			return Redirect::route('account')->with('message','Email Address Successfully Changed!');
 		}
 	}
 
@@ -146,7 +146,7 @@ class StandardMemberController extends \BaseController {
 			$user->save();
 
 			// redirect back
-			return Redirect::route('account')->with('message','Mobile Phone Number Change Successful!');
+			return Redirect::route('account')->with('message','Mobile Phone Number Successfully Changed!');
 		}
 	}
 
@@ -191,7 +191,7 @@ class StandardMemberController extends \BaseController {
 			$user->save();
 
 			// redirect back
-			return Redirect::route('account')->with('message','Password Change Successful!');
+			return Redirect::route('account')->with('message','Password Successfully Changed!');
 		}
 	}
 
